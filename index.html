@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <title>The Improv Oracle</title>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Nunito:wght@400;600;700&display=swap"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="aura" aria-hidden="true"></div>
+    <main>
+      <header class="top">
+        <div>
+          <h1>The Improv Oracle</h1>
+          <p class="sub">
+            Draw cards from the deck and let them start your story.
+          </p>
+        </div>
+        <nav class="seg" aria-label="Choose a mode">
+          <button data-view="oracle" aria-pressed="true">Improv Oracle</button>
+          <button data-view="game" aria-pressed="false">Memory match</button>
+          <button data-view="code" aria-pressed="false">Mastermind</button>
+        </nav>
+      </header>
+
+      <section id="oracle" class="layout">
+        <div class="controls panel">
+          <h2 class="eyebrow">Your spread</h2>
+          <div class="seg" role="group" aria-label="Spread size">
+            <button data-m="1" aria-pressed="false">1 card</button>
+            <button data-m="3" aria-pressed="true">3-card spread</button>
+          </div>
+          <button id="go" class="cta">Shuffle the deck</button>
+          <div id="msg" aria-live="polite"></div>
+        </div>
+
+        <div class="stage">
+          <div id="fan"></div>
+          <div id="slots"></div>
+        </div>
+
+        <section id="read" class="panel" hidden>
+          <h2 class="eyebrow">Your reading</h2>
+          <ul id="list"></ul>
+          <div id="timer" hidden>
+            <p>
+              Tell your story before the time runs out, or pass the deck to a
+              friend to continue.
+            </p>
+            <div class="tnum" id="tnum" role="timer">1:00</div>
+            <div class="tbar"><i id="tbar"></i></div>
+            <div class="seg" role="group" aria-label="Timer length">
+              <button data-t="30" aria-pressed="false">30s</button>
+              <button data-t="60" aria-pressed="true">1 min</button>
+              <button data-t="90" aria-pressed="false">1:30</button>
+              <button data-t="120" aria-pressed="false">2 min</button>
+            </div>
+            <button id="tgo" class="cta">Start timer</button>
+          </div>
+        </section>
+      </section>
+
+      <section id="game" class="layout" hidden>
+        <div class="controls panel">
+          <h2 class="eyebrow">Memory match</h2>
+          <p class="sub">Find every pair in as few moves as you can.</p>
+          <div class="seg" role="group" aria-label="Number of pairs">
+            <button data-p="6" aria-pressed="true">6</button>
+            <button data-p="8" aria-pressed="false">8</button>
+            <button data-p="10" aria-pressed="false">10</button>
+            <button data-p="12" aria-pressed="false">12</button>
+          </div>
+          <div id="stats" aria-live="polite"></div>
+          <button id="again" class="cta">New game</button>
+        </div>
+        <div class="stage gstage">
+          <div id="grid"></div>
+        </div>
+      </section>
+      <section id="code" class="layout" hidden>
+        <div class="controls panel">
+          <h2 class="eyebrow">Mastermind</h2>
+          <p class="sub">
+            The oracle hid a code of 4 cards (repeats allowed). Crack it in 8
+            tries. ● = right card, right spot. ○ = right card, wrong spot.
+          </p>
+          <div id="cstat" aria-live="polite"></div>
+          <button id="cnew" class="cta">New code</button>
+        </div>
+        <div class="stage cstage">
+          <div id="secret"></div>
+          <div id="board"></div>
+          <div id="pal"></div>
+          <div class="cact">
+            <button id="undo">Undo</button>
+            <button id="check" class="cta">Check</button>
+          </div>
+        </div>
+      </section>
+    </main>
+    <script src="script.js"></script>
+  </body>
+</html>
